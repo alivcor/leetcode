@@ -43,9 +43,15 @@ public:
         cout << endl;
         return bin2dec(bin_num);
     }
+    int optimizedfindCompliment(int num) {
+        unsigned mask = ~0;
+        while(num & mask){ mask <<= 1;};
+        return ~(mask | num);
+    }
 };
 int main() {
     Solution sol;
-    cout << sol.findComplement(5);
+    cout << sol.findComplement(5) << endl;
+    cout << sol.optimizedfindCompliment(5);
     return 0;
 }
