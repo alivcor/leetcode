@@ -1,34 +1,25 @@
 #include <iostream>
 #include <vector>
-
+using namespace std;
 
 class Solution {
 public:
-    std::vector<bool> dec2bin(int num){
-        std::vector<bool> bin_num;
-        while(num!=0){
-            bool rem = num%2;
-            num /= 2;
-            bin_num.insert(bin_num.begin(), rem);
-        };
-        return bin_num;
-    }
     int hammingDistance(int x, int y) {
-        std::vector<bool> bx = dec2bin(x);
-        for(auto i = bx.begin(); i!=bx.end(); ++i){
-            std::cout<<*i;
+        int dist = 0, num = x^y;
+        //loop is for counting the number of set bits in num (x^y)
+        while(num){
+            dist++; //how may bits we have turned off(set to 0)
+            num &= num-1; // set the rightmost bit to zero
         }
-        std::cout << "\n ---- \n";
-        std::vector<bool> by = dec2bin(y);
-        for(auto i = by.begin(); i!=by.end(); ++i){
-            std::cout<<*i;
-        }
+        return dist;
+
     }
 };
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    cout << "Hello, World!" << std::endl;
     Solution sol;
-    sol.hammingDistance(101,4);
+    int dist = sol.hammingDistance(101,4);
+    cout << dist;
     return 0;
 }
