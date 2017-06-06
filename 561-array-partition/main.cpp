@@ -7,6 +7,8 @@ public:
     int arrayPairSum(vector<int>& nums) {
         int maxSum = 0;
         int holder = 0;
+        std::sort(nums.begin(), nums.end());
+        std::reverse(nums.begin(),nums.end());
         std::vector<int> pairs;
         bool insFlag = true;
         for(auto it = nums.begin(); it != nums.end(); ++it){
@@ -15,14 +17,16 @@ public:
                 holder = *it;
                 insFlag = false;
             } else {
-                pairs.insert(pairs.begin(), holder + *it);
+                pairs.insert(pairs.begin(), min(holder,*it));
                 insFlag = true;
             }
         }
-        for(auto it = pairs.begin(); it!=pairs.end(); ++it){
-            cout << *it;
-            cout << " ";
-        }
+//        for(auto it = pairs.begin(); it!=pairs.end(); ++it){
+//            cout << *it;
+//            cout << " ";
+//        }
+        for(std::vector<int>::iterator it = pairs.begin(); it != pairs.end(); ++it)
+            maxSum += *it;
         return maxSum;
     }
 };
