@@ -1,25 +1,41 @@
 #include <iostream>
-#include "vector
+#include "vector"
+#include "string"
 using namespace std;
 
 class Solution {
 public:
+    void printIntVector(vector<int>& nums){
+        string s;
+        for(auto it = nums.begin();it!=nums.end(); ++it){
+            s.append(to_string(*it));
+            s.append(", ");
+        }
+        std::cout << s.substr(0,s.length()-2);
+    }
     vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
-        std::vector<std::vector<int>> res_m;
-        std::vector<int> all_elem;
-        for(auto it1 = nums.begin(); it1 != nums.end(); it1++){
-            for(auto it2 = (*it1).begin(); it2 != (*it1).end(); it2++) {
-                all_elem.insert(all_elem.end(), *it2);
+        int m = nums.size(); //current number of rows
+        int n = nums[0].size(); //current number of cols
+        int N = m*n;
+        vector<vector<int>> res(r, vector<int>(c, 0));
+
+        if(r*c!=N){ return nums;}
+        else {
+            for(int i = 0 ; i < N; i++){
+                res[i/c][i%c] = nums[i/n][i%n];
             }
         }
-        for(int i = 0; i < all_elem.size(); i++){
-
-        }
-
+        return res;
     }
 };
 
 int main() {
     std::vector<std::vector<int>> matrix {{1,2,3,4},{5,6,7,8},{9,10,11,12}, {13,14,15,16}};
+    Solution sol;
+    vector<vector<int>> newm = sol.matrixReshape(matrix, 2, 8);
+    for(auto it=newm.begin();it!=newm.end();++it){
+        sol.printIntVector(*it);
+        cout << " \n";
+    }
     return 0;
 }
