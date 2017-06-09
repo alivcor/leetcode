@@ -20,31 +20,31 @@ public:
                 if(belongsto == 0) {
                     if (listA.find((char)toupper((*it)[i]))!=std::string::npos) {
                         belongsto = 1;
-                        cout << *it << " belongsto " << belongsto << endl;
+//                        cout << *it << " belongsto " << belongsto << endl;
                     } else {
                         if (listB.find((char)toupper((*it)[i]))!=std::string::npos) {
                             belongsto = 2;
-                            cout << *it << " belongsto " << belongsto << endl;
+//                            cout << *it << " belongsto " << belongsto << endl;
                         } else {
                             if (listC.find((char)toupper((*it)[i]))!=std::string::npos) {
                                 belongsto = 3;
-                                cout << *it << " belongsto " << belongsto << endl;
+//                                cout << *it << " belongsto " << belongsto << endl;
                             }
                         }
                     }
                 } else {
                     if (listA.find((char)toupper((*it)[i]))!=std::string::npos && belongsto != 1) {
-                        cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
+//                        cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
                         good = false;
                         break;
                     } else {
                         if (listB.find((char)toupper((*it)[i]))!=std::string::npos && belongsto != 2) {
-                            cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
+//                            cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
                             good = false;
                             break;
                         } else {
                             if (listC.find((char)toupper((*it)[i]))!=std::string::npos && belongsto != 3) {
-                                cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
+//                                cout << *it << " << Not good ! mismatch " << (char)toupper((*it)[i]) << endl;
                                 good = false;
                                 break;
                             }
