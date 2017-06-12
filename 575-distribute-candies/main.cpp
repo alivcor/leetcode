@@ -17,7 +17,13 @@ public:
             }
         };
         return min(numCandies/2, (int)candiesMap.size());
-
+    }
+    int optimized_distributeCandies(vector<int>& candies) {
+        unordered_set<int> kinds;
+        for (int kind : candies) {
+            kinds.insert(kind);
+        }
+        return min(kinds.size(), candies.size() / 2);
     }
 
 };
