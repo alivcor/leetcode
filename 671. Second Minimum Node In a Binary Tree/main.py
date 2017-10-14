@@ -3,6 +3,7 @@ def findSecondMinimumValue(root):
     """
     :type root: TreeNode
     :rtype: int
+
     """
     def dfs(node):
         if node:
