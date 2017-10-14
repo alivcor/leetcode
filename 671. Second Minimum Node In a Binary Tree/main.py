@@ -9,7 +9,6 @@ def findSecondMinimumValue(root):
             uniques.add(node.val)
             dfs(node.left)
             dfs(node.right)
-
     uniques = set()
     dfs(root)
     minv = float("inf")
