@@ -18,5 +18,6 @@ def validPalindrome(s):
         if(s[i] != s[len(s)-1-i]):
             j = len(s)-1-i
             return ispalin(i+1,j) or ispalin(i,j-1)
+    return True
 
 print validPalindrome("acbdvbca")
