@@ -7,8 +7,8 @@ class NumArray(object):
         self.hashmap = {}
         self.precomputeN()
 
-    def precomputeN():
-        for x in range(len(nums)):
+    def precomputeN(self):
+        for x in range(len(self.nums)):
             if x == 0:
                 self.hashmap[x] = self.nums[x]
             else:
@@ -20,7 +20,7 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        return self.hashmap(j) - self.hashmap(i)
+        return self.hashmap[j] - self.hashmap[i] + self.nums[i]
 
 
 # Your NumArray object will be instantiated and called as such:
