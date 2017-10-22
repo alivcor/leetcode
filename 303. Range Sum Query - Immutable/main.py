@@ -4,6 +4,15 @@ class NumArray(object):
         :type nums: List[int]
         """
         self.nums = nums
+        self.hashmap = {}
+        self.precomputeN()
+
+    def precomputeN():
+        for x in range(len(nums)):
+            if x == 0:
+                self.hashmap[x] = self.nums[x]
+            else:
+                self.hashmap[x] = self.hashmap[x - 1] + self.nums[x]
 
     def sumRange(self, i, j):
         """
@@ -11,10 +20,9 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        if i < j:
-            return self.nums[i] + self.nums[j] + self.sumRange(i + 1, j - 1)
-        elif i == j:
-            return self.nums[i]
-        else:
-            return 0
+        return self.hashmap(j) - self.hashmap(i)
 
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(i,j)
