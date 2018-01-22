@@ -55,3 +55,5 @@ hs_err_pid*
 *.app
 *.xml
 *.vcs
+/461. hamming/cmake-build-debug/
+/461. hamming/.idea/
