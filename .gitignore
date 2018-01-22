@@ -57,3 +57,5 @@ hs_err_pid*
 *.vcs
 /461. hamming/cmake-build-debug/
 /461. hamming/.idea/
+/561. array-partition/.idea/
+/561. array-partition/cmake-build-debug/
