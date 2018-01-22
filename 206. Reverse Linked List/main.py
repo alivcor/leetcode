@@ -21,7 +21,7 @@ class ListNode(object):
             x = x.next
         print None
 
-    def reverseList(self):
+    def reverseListIteratively(self):
         prev = None
         curr = self
         while(curr):
@@ -31,6 +31,12 @@ class ListNode(object):
             curr = nexttemp
         return prev
 
+    def reverseListRecursively(self):
+        if self == None or self.next == None: return self
+        reversedright = self.next.reverseListRecursively()
+        self.next.next = self
+        self.next = None
+        return reversedright
 
 def initLists():
     l1 = ListNode(10)
@@ -39,5 +45,5 @@ def initLists():
     return l1
 
 l1 = initLists()
-l1 = l1.reverseList()
+l1 = l1.reverseListRecursively()
 l1.printList()
