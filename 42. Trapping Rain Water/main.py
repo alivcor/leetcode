@@ -24,7 +24,6 @@ def trapOptimized(heights):
     :rtype: int
     """
     count = 0
-    canhold = 0
     lenh = len(heights)
     for x in xrange(1, lenh-1):
         maxLeft = maxRight = 0
@@ -35,8 +34,7 @@ def trapOptimized(heights):
             maxRight = max(maxRight, heights[j])
         canhold = min(maxLeft, maxRight) - curr
         # print canhold,
-        if canhold > 0:
-            count += canhold
+        count += canhold
 
     return count
 
