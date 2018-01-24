@@ -36,6 +36,24 @@ def trapOptimized(heights):
     return count
 
 
+def trapDP(heights):
+    count = 0
+    lenh = len(heights)
+    if lenh == 0:
+        return 0
+    leftMax = dict()
+    rightMax = dict()
+    leftMax[0] = heights[0]
+    rightMax[lenh-1] = heights[lenh-1]
+    for x in xrange(1, lenh):
+        leftMax[x] = max(leftMax[x-1], heights[x])
+    for x in xrange(lenh-2, 0, -1):
+        rightMax[x] = max(rightMax[x+1], heights[x])
+    for x in xrange(1, lenh-1):
+        count+= min(leftMax[x], rightMax[x]) - heights[x]
+    return count
+
+
 def skyline(heights, maxHeight):
     print heights
     print "\n"
@@ -53,9 +71,10 @@ def skyline(heights, maxHeight):
 
 testcase = [0,1,0,2,1,0,1,3,2,1,2,1]
 maxHeight = 6
-randcase = [random.randint(0, maxHeight) for x in xrange(10)]
+randcase = [random.randint(1, maxHeight) for x in xrange(40)]
 
 skyline(randcase, maxHeight)
 
 print trap(randcase)
 print trapOptimized(randcase)
+print trapDP(randcase)
