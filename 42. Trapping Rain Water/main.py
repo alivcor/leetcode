@@ -7,13 +7,18 @@ def trap(heights):
     """
     count = 0
     lenh = len(heights)
+    maxLeft = 0
+    mli = 0
+    maxRight = 0
+    mri = 0
     for x in xrange(lenh):
         curr = heights[x]
-        maxLeft = max(heights[0:x]) if x != 0 else 0
-        maxRight = max(heights[x+1:]) if x != lenh-1 else 0
-
+        maxLeft = max(heights[mli:x]) if mli < x else 0
+        mli = heights.index(maxLeft)
+        maxRight = max(heights[x + 1:mri]) if x+1 < mri else 0
+        mri = heights.index(maxRight)
         canhold = min(maxLeft, maxRight) - curr
-        # print canhold
+        print canhold
         if canhold > 0:
             count += canhold
     return count
