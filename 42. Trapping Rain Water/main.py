@@ -41,16 +41,16 @@ def trapDP(heights):
     lenh = len(heights)
     if lenh == 0:
         return 0
-    leftMax = dict()
-    rightMax = dict()
-    leftMax[0] = heights[0]
-    rightMax[lenh-1] = heights[lenh-1]
-    for x in xrange(1, lenh):
-        leftMax[x] = max(leftMax[x-1], heights[x])
-    for x in xrange(lenh-2, 0, -1):
-        rightMax[x] = max(rightMax[x+1], heights[x])
-    for x in xrange(1, lenh-1):
-        count+= min(leftMax[x], rightMax[x]) - heights[x]
+    maxLeft = dict()
+    maxRight = dict()
+    maxLeft[0] = heights[0]
+    maxRight[lenh - 1] = heights[lenh - 1]
+    for x in xrange(1, lenh - 1):
+        maxLeft[x] = max(maxLeft[x - 1], heights[x])
+    for x in xrange(lenh - 2, 0, -1):
+        maxRight[x] = max(maxRight[x + 1], heights[x])
+    for x in xrange(1, lenh - 1):
+        count += min(maxLeft[x], maxRight[x]) - heights[x]
     return count
 
 
