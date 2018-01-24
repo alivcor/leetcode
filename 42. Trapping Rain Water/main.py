@@ -1,3 +1,4 @@
+import random
 
 def trap(heights):
     """
@@ -12,7 +13,7 @@ def trap(heights):
         maxRight = max(heights[x+1:]) if x != lenh-1 else 0
 
         canhold = min(maxLeft, maxRight) - curr
-        print canhold,
+        # print canhold,
         if canhold > 0:
             count += canhold
     return count
@@ -22,32 +23,44 @@ def trapOptimized(heights):
     :type height: List[int]
     :rtype: int
     """
-    print heights
     count = 0
+    canhold = 0
     lenh = len(heights)
-    maxLeft = 0
-    mli = 0
-    maxRight = 0
-    mri = lenh
-    for x in xrange(lenh):
-        print x, " | ",
+    for x in xrange(1, lenh-1):
+        maxLeft = maxRight = 0
         curr = heights[x]
-        print "Current height is", curr, " | ",
-        maxLeft = max(maxLeft, max(heights[mli:x])) if mli < x else 0
-        print "maxLeft is ", maxLeft, " | ",
-        mli = heights[mli:x].index(maxLeft) + x if mli < x else 0
-        print "mli is ", mli, " | ",
-        maxRight = max(maxRight, max(heights[x + 1:mri])) if x+1 < mri else 0
-        print "maxRight is ", maxRight, " | ",
-        mri = heights[x + 1:mri].index(maxRight) + x if x+1 < mri else lenh
-        print "mri is ", mri, " | ",
+        for i in xrange(0, x+1):
+            maxLeft = max(maxLeft, heights[i])
+        for j in xrange(x, lenh):
+            maxRight = max(maxRight, heights[j])
         canhold = min(maxLeft, maxRight) - curr
-        print canhold
+        # print canhold,
         if canhold > 0:
             count += canhold
+
     return count
 
 
+def skyline(heights, maxHeight):
+    print heights
+    print "\n"
+    for n in xrange(maxHeight, 0, -1):
+        for i in heights:
+            # print n, i,
+            if i >= n:
+                print unichr(0x2588),
+            else:
+                print " ",
+        print ""
+    print "\n"
 
-print trap([0,1,0,2,1,0,1,3,2,1,2,1])
-print trapOptimized([0,1,0,2,1,0,1,3,2,1,2,1])
+
+
+testcase = [0,1,0,2,1,0,1,3,2,1,2,1]
+maxHeight = 6
+randcase = [random.randint(0, maxHeight) for x in xrange(10)]
+
+skyline(randcase, maxHeight)
+
+print trap(randcase)
+print trapOptimized(randcase)
