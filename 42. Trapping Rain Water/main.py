@@ -32,10 +32,7 @@ def trapOptimized(heights):
             maxLeft = max(maxLeft, heights[i])
         for j in xrange(x, lenh):
             maxRight = max(maxRight, heights[j])
-        canhold = min(maxLeft, maxRight) - curr
-        # print canhold,
-        count += canhold
-
+        count += min(maxLeft, maxRight) - curr
     return count
 
 
