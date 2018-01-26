@@ -11,6 +11,10 @@ def printMatrix(m):
         print ""
     print ""
 
+def rotatePythonic(matrix):
+    matrix[::] = zip(*matrix[::-1])
+
+
 
 def rotate(matrix):
     """
@@ -34,5 +38,6 @@ testcase = [[1,2,3], [4,5,6], [7,8,9]]
 m = generateMatrix(3)
 m = testcase
 printMatrix(m)
-rotate(m)
+rotatePythonic(m)
 printMatrix(m)
+
