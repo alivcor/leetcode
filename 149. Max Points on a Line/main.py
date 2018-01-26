@@ -11,7 +11,7 @@ def gcd(a, b):
     return a
 
 def generateNPoints(N):
-    return [Point(random.randint(0,12), random.randint(0,12)) for _ in xrange(12)]
+    return [Point(random.randint(0,12), random.randint(0,12)) for _ in xrange(N)]
 
 def printPoints(NPoints):
     for point in NPoints:
@@ -59,6 +59,6 @@ def maxPoints(points):
 
 
 
-NPoints = generateNPoints(12)
+NPoints = generateNPoints(6)
 printPoints(NPoints)
 print maxPoints(NPoints)
