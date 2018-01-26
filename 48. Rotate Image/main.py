@@ -19,7 +19,7 @@ def rotate(matrix):
     """
     matrix.reverse()
     for i in xrange(len(matrix)):
-        for j in xrange(i+1, len(matrix)):
+        for j in xrange(i+1, len(matrix)): ##imp i+1
             temp = matrix[i][j]
             matrix[i][j] = matrix[j][i]
             matrix[j][i] = temp
