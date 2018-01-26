@@ -30,6 +30,8 @@ def rotate(matrix):
 
 
 
+def antirotate(matrix):
+    matrix[::] = reversed(zip(*matrix))
 
 
 
@@ -38,6 +40,6 @@ testcase = [[1,2,3], [4,5,6], [7,8,9]]
 m = generateMatrix(3)
 m = testcase
 printMatrix(m)
-rotatePythonic(m)
+antirotate(m)
 printMatrix(m)
 
