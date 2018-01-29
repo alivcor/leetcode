@@ -1,11 +1,13 @@
 def strStr(haystack, needle):
-    for i in xrange(len(haystack)):
-        for j in xrange(len(needle)):
-            if j == len(needle)-1: return i
-            if needle[j] != haystack[i+j]: return -1
+    h = len(haystack)
+    n = len(needle)
+    if n == 0: return 0
+    for i in xrange(h-n+1):
+        for j in xrange(n):
+            print "compare", haystack[i+j], needle[j]
+            if haystack[i+j] != needle[j]: break
+            if j == n-1: return i
+    return -1
 
 
-
-
-
-print strStr("magazine", "zi")
+print strStr("aaa", "")
