@@ -3,9 +3,9 @@ from binarytree import tree, bst, heap
 
 class TreeNode(object):
     def __init__(self, x):
-            self.val = x
-            self.left = None
-            self.right = None
+        self.val = x
+        self.left = None
+        self.right = None
 
 def lowestCommonAncestor(root, p, q):
     """
