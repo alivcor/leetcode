@@ -1,11 +1,6 @@
 from binarytree import tree
 import Queue
 
-# Generate a random binary tree and return its root node
-my_tree = tree(height=3, is_perfect=False)
-
-print(my_tree)
-
 
 def binaryTreeLevelOrder(root):
     """
@@ -13,14 +8,31 @@ def binaryTreeLevelOrder(root):
     :rtype: List[str]
     """
     if root == None:
-        return None
+        return []
 
-    q = Queue.LifoQueue()
+    q = Queue.Queue()
     q.put(root)
 
+    mainList = []
     while(not q.empty()):
-        node_out = q.get()
-        print node_out.val
-        if node_out.left != None: q.put(node_out.left)
-        if node_out.right != None: q.put(node_out.right)
+        level_num = q.qsize()
+        # print "level_num =", level_num,
+        sublist = []
+        for i in xrange(level_num):
+            node_out = q.get()
+            # print "i =", i, " | node_out.value =", node_out.value, " | queue = ", list(q.queue),
+            if node_out.left != None: q.put(node_out.left)
+            if node_out.right != None: q.put(node_out.right)
+            sublist.append(node_out.value)
+            # print " | subList: ", sublist
+        mainList.append(sublist)
+    return mainList
+
+
+# Generate a random binary tree and return its root node
+my_tree = tree(height=2, is_perfect=True)
+
+print(my_tree)
+
+print(binaryTreeLevelOrder(my_tree))
 
